@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="rootlogAppender"
+		class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[ %p ] %d{yyyy-MM-dd HH:mm:ss} %c %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="analyticsAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.base}/logs/analytics.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[ %p ] %d{yyyy-MM-dd HH:mm:ss} %c %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="debuglogAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.base}/logs/debuglog.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[ %p ] %d{yyyy-MM-dd HH:mm:ss} %c %m%n" />
+		</layout>
+	</appender>
+
+	 <logger name="com.fsmeeting">
+		<level value="dedug" />
+		<appender-ref ref="analyticsAppender" />
+	</logger>
+	
+	<root>
+		<level value="info" />
+		<appender-ref ref="rootlogAppender" />
+		<appender-ref ref="analyticsAppender" />
+	</root>
+
+</log4j:configuration>
