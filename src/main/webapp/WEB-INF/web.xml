@@ -16,6 +16,11 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:application_scheduler.xml</param-value>
 	</context-param>
+
+	<listener>
+		<listener-class>com.fsmeeting.scheduler.web.listener.SchedulerListener</listener-class>
+	</listener>
+
 	<!--spring监听 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

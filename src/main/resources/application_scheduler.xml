@@ -100,45 +100,11 @@
 			pointcut-ref="druid-stat-pointcut" />
 	</aop:config>
 
-
-	<bean id="scheduler"
-		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="triggers">
-			<list>
-				<ref bean="ACronTrigger" />
-				<!-- <ref bean="BCronTrigger" /> <ref bean="CCronTrigger" /> -->
-			</list>
-		</property>
-	</bean>
-
-	<bean id="ACronTrigger"
-		class="com.fsmeeting.scheduler.utils.InitCronTriggerFactoryBean">
-		<property name="jobDetail" ref="AJobDetail" />
-		<property name="cronExpression">
-			<value>test</value>
-		</property>
-	</bean>
-
-	<bean id="AJobDetail"
-		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="durability" value="true" />
-		<property name="jobClass" value="com.fsmeeting.scheduler.job.HelloJob" />
-	</bean>
 	<!-- dynamic -->
-	<bean name="quartzScheduler"
-		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
-		<property name="configLocation" value="classpath:quartz.properties" />
-	</bean>
+	<!-- <bean name="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+		</bean> -->
 
-	<bean id="jobDetail"
-		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass">
-			<value>com.fsmeeting.scheduler.job.HelloJob</value>
-		</property>
-		<property name="durability" value="true" />
-	</bean>
+	<bean name="scheduler" class="org.quartz.impl.StdSchedulerFactory" />
 
 </beans>
   

@@ -20,7 +20,7 @@ import com.fsmeeting.scheduler.job.HelloJob;
  * Application Lifecycle Listener implementation class AListener
  *
  */
-public class ApplicationContextListener implements ServletContextListener {
+public class SchedulerListener implements ServletContextListener {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.fsmeeting.scheduler.service.SchedulerService;
 
-@Service("schedulerService")
+//@Service("schedulerService")
 public class SchedulerServiceImpl implements SchedulerService {
 
     private static final String NULLSTRING = null;
